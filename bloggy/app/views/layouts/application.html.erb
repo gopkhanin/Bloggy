@@ -10,11 +10,19 @@
   <div class="navbar">
     <div class="navbar-inner">
       <div class="container-fluid">
-        <a href="#" class="brand">Bloggy</a>
+        <a href="#" class="brand">Basic Ruby On Rails</a>
       </div>
     </div>
   </div>
-<%= yield %>
+  <div class="container-fluid">
+        <% flash.each do |name, msg| %>
+        <div class="alert alert-<%= name == :notice ? 'success' : 'error' %>">
+          <a class='close' data-dismiss="alert">x</a>
+          <%= msg %>
+        </div>
+      <% end %>
+    <%= yield %>
+  </div>
 
 </body>
 </html>

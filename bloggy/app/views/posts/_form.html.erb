@@ -1,4 +1,5 @@
-<%= form_for(@post) do |f| %>
+<%= form_for(@post,html:{ class: 'form-vertical'}) do |f| %>
+<fieldset>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -10,16 +11,27 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <!-- Title -->
+  <div class="controller-group">
+    <%= f.label :title %>
+      <div class="controls">
+        <%= f.text_field :title, class: 'span12' %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
+  <!-- Body -->
+  <div class="controller-group">
+    <%= f.label :body %>
+      <div class="control">
+        <%= f.text_area :body , class: 'span12' %>
+      </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <!-- Action -->
+  <div class="form-actions clearfix">
+    <span class="pull-left">
+      <%= f.submit class: 'btn btn-primary' %>
+      <%= link_to 'Back', posts_path , class: 'btn' %>
+    </span>
   </div>
+  <!-- END -->
+</fieldset>
 <% end %>
